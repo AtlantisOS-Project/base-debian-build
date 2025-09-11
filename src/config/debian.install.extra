@@ -1,0 +1,9 @@
+build/@PKG_NAME@ usr/bin/
+desktop/@DESKTOP_NAME@ usr/share/applications/
+icons/@ICON_NAME@ usr/share/icons/hicolor/256x256/apps/
+icons/@ICON_NAME@ usr/share/@PKG_NAME@/
+build/po/en/LC_MESSAGES/@PKG_NAME@.mo /usr/share/locale/en/LC_MESSAGES/@PKG_NAME@.mo
+build/po/de/LC_MESSAGES/@PKG_NAME@.mo /usr/share/locale/de/LC_MESSAGES/@PKG_NAME@.mo
+debian/@PKG_NAME@.1 usr/share/man/man1/
+debian/@PKG_NAME@.de.1 usr/share/man/de/man1/
+
