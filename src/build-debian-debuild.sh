@@ -52,6 +52,7 @@ replace_vars() {
 # set date and the main debian dir
 export LC_TIME=C
 DATE=$(date --date='today' +"%a, %d %b %Y %H:%M:%S %z")
+debian_dir="${source_dir}/debian"
 
 # create the debian package structure
 echo "[INFO] Create /debian structure..."
@@ -93,7 +94,7 @@ EOF
 
 # create the copyright file
 cat > "${debian_dir}/copyright" <<EOF
-Copyright (C) $(DATE +%Y) $MAINTAINER_NAME
+Copyright: $(DATE +%Y) $MAINTAINER_NAME
 
 License: $LICENSE
 EOF
