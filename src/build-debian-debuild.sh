@@ -117,7 +117,7 @@ fi
 
 # create the copyright file
 cat > "${debian_dir}/copyright" <<EOF
-Copyright: $(DATE +%Y) $MAINTAINER_NAME
+Copyright: $(date +%Y) $MAINTAINER_NAME
 
 License: $LICENSE
 EOF
