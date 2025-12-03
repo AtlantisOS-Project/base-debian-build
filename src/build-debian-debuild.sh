@@ -11,9 +11,6 @@
 
 set -euo pipefail
 
-# get parameter for building deb
-BUILD_PARAM=$1
-
 # main dirs
 home_dir="$HOME"
 source_dir="$(pwd)"
@@ -21,25 +18,16 @@ source_dir="$(pwd)"
 # the config file
 CONF_DIR="${source_dir}/config"
 CONF_FILE="$CONF_DIR/package.conf"
-CONF_FILE_UBUNTU="$CONF_DIR/package_ubuntu.conf"
 GENERATE_MAN="${source_dir}/deb/generate-manpages.sh"
 DESKTOP_DIR="${source_dir}/deb/desktop"
 GENERATE_DESKTOP="${source_dir}/deb/generate-desktop.sh"
 
 # load the config file
-if [[ $BUILD_PARAM == "ubuntu" ]]; then
-	if [[ ! -f "$CONF_FILE_UBUNTU" ]]; then
-    	echo "[ERROR] Config file $CONF_FILE_UBUNTU not found!"
-    	exit 1
-	fi
-	source "$CONF_FILE_UBUNTU"
-else 
-	if [[ ! -f "$CONF_FILE" ]]; then
-    	echo "[ERROR] Config file $CONF_FILE not found!"
-    	exit 1
-	fi
-	source "$CONF_FILE"
+if [[ ! -f "$CONF_FILE" ]]; then
+   	echo "[ERROR] Config file $CONF_FILE not found!"
+   	exit 1
 fi
+source "$CONF_FILE"
 
 # add the man file
 source "$GENERATE_MAN"
@@ -95,25 +83,15 @@ Description: $DESCRIPTION
  $LONG_DESCRIPTION
 EOF
 
-if [[ $CHANGE_TYPE == "ubuntu" ]]; then
-	# create the changelog file
-	cat > "${debian_dir}/changelog" <<EOF
-$PKG_NAME (${VERSION}ubuntu${PATCH}) $BRANCH; urgency=medium
 
-  * $CONTENT
-
- -- $MAINTAINER  $DATE
-EOF
-else
-	# create the changelog file
-	cat > "${debian_dir}/changelog" <<EOF
+# create the changelog file
+cat > "${debian_dir}/changelog" <<EOF
 $PKG_NAME (${VERSION}-${PATCH}) $BRANCH; urgency=medium
 
   * $CONTENT
 
  -- $MAINTAINER  $DATE
 EOF
-fi
 
 # create the copyright file
 cat > "${debian_dir}/copyright" <<EOF
