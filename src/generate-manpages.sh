@@ -16,10 +16,12 @@ generate_manpages() {
 
     echo "[INFO] Generating manpages..."
 	
-    for conf in $man_dir/man.*.conf; do
-    	[[ -f "$conf" ]] || continue
+    for conf in $man_dir/man.*.conf; do 
+        [[ -f "$conf" ]] || continue
 
-        lang="${conf#atl_man.}"
+        local filename=$(basename "$conf")
+        
+        lang="${filename#man.}" 
         lang="${lang%.conf}"
 
         # define the output file
