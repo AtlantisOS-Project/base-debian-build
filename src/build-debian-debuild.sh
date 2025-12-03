@@ -107,7 +107,7 @@ EOF
 else
 	# create the changelog file
 	cat > "${debian_dir}/changelog" <<EOF
-$PKG_NAME (${VERSION}-{$PATCH}) $BRANCH; urgency=medium
+$PKG_NAME (${VERSION}-${PATCH}) $BRANCH; urgency=medium
 
   * $CONTENT
 
