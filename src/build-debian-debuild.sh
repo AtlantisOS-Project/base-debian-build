@@ -86,7 +86,7 @@ EOF
 
 # create the changelog file
 cat > "${debian_dir}/changelog" <<EOF
-$PKG_NAME (${VERSION}ubuntu${PATCH}) $BRANCH; urgency=medium
+$PKG_NAME (${VERSION}ubuntu${PATCH}) $BRANCH; urgency=$URGENCY
 
   * $CONTENT
 
@@ -95,7 +95,7 @@ EOF
 
 # create the copyright file
 cat > "${debian_dir}/copyright" <<EOF
-Copyright: $(date +%Y) $MAINTAINER_NAME
+Copyright (C) $(date +%Y) $MAINTAINER_NAME
 
 License: $LICENSE
 EOF
