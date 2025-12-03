@@ -148,21 +148,3 @@ EOF
 fi
 
 chmod +x "${debian_dir}/rules"
-
-
-chmod +x "${debian_dir}/rules"
-
-# starting the building
-read -rp "[?] Start build with debuild? [y/N] " answer
-if [[ "$answer" =~ ^[jJyY]$ ]]; then
-    echo "[INFO] Start build..."
-    if debuild -us -uc; then
-        echo "[OK] Build Debian-Package completed."
-    else
-        echo "[ERROR] Error with building."
-        exit 1
-    fi
-else
-    echo "[INFO] Build cancelled."
-fi
-
