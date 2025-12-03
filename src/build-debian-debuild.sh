@@ -18,9 +18,9 @@ source_dir="$(pwd)"
 # the config file
 CONF_DIR="${source_dir}/config"
 CONF_FILE="$CONF_DIR/package.conf"
-GENERATE_MAN="${source_dir}/generate-manpages.sh"
-DESKTOP_DIR="${source_dir}/desktop"
-GENERATE_DESKTOP="${source_dir}/generate-desktop.sh"
+GENERATE_MAN="${source_dir}/deb/generate-manpages.sh"
+DESKTOP_DIR="${source_dir}/deb/desktop"
+GENERATE_DESKTOP="${source_dir}/deb/generate-desktop.sh"
 
 if [[ ! -f "$CONF_FILE" ]]; then
     echo "[ERROR] Config file $CONF_FILE not found!"
